@@ -52,7 +52,7 @@ function addEmployee() {
                     if (err) {
                         return console.log(err);
                     }
-                    console.log("Successfully Written TeamPage, check your output folder");
+                    console.log("Team page generated successfully. Check your output folder");
                 })
                 break;
 
