@@ -13,7 +13,106 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+function officeRoster() {
+    inquirer.prompt({
+        type: "list",
+        name: "choice",
+        message: "What do you want to do?",
+        choices: ["Add a Manager", "Add an Intern", "Add an Engineer", "Exit"]
+    }).then(function ({ choice }) {
+        switch (choice) {
+            case "Add a Manager":
+                addManager();
+                break;
 
+            case "Add an Intern":
+                addIntern();
+                break;
+
+            case "Add an Engineer":
+                addEngineer();
+                break;
+
+            default:
+                console.log("Generating your team page...")
+                // render();
+                break;
+        }
+    })
+}
+
+function addManager() {
+    inquirer.prompt(
+        {
+            type: "input",
+            message: "Please enter the Manager's name:",
+            name: "name"
+        },{
+            type: "input",
+            message: "Please enter the Manager's ID #:",
+            name: "id"
+        },{
+            type: "input",
+            message: "Please enter the Manager's email:",
+            name: "email"
+        },{
+            type: "input",
+            message: "Please enter the Manager's office number:",
+            name: "officeNumber"
+        }
+    ).then(function(answers) {
+        const newManager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        console.log(newManager);  
+    })
+}
+function addEngineer() {
+    inquirer.prompt(
+        {
+            type: "input",
+            message: "Please enter the Engineer's name:",
+            name: "name"
+        },{
+            type: "input",
+            message: "Please enter the Engineer's ID #:",
+            name: "id"
+        },{
+            type: "input",
+            message: "Please enter the Engineer's email:",
+            name: "email"
+        },{
+            type: "input",
+            message: "Please enter the Engineer's GitHub username:",
+            name: "github"
+        }
+    ).then(function(answers) {
+        const newEngineer = new Engineer (answers.name, answers.id, answers.email, answers.github)
+        console.log(newEngineer);  
+    })
+}
+function addIntern() {
+    inquirer.prompt(
+        {
+            type: "input",
+            message: "Please enter the Intern's name:",
+            name: "name"
+        },{
+            type: "input",
+            message: "Please enter the Intern's ID #:",
+            name: "id"
+        },{
+            type: "input",
+            message: "Please enter the Intern's email:",
+            name: "email"
+        },{
+            type: "input",
+            message: "Please enter the Intern's school:",
+            name: "school"
+        }
+    ).then(function(answers) {
+        const newIntern = new Intern (answers.name, answers.id, answers.email, answers.school)
+        console.log(newIntern);  
+    })
+}
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
@@ -33,3 +132,4 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+officeRoster();
