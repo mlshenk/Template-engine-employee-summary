@@ -1,0 +1,27 @@
+body {
+    background-color: darksalmon;
+}
+h1{
+    font-weight: bold;
+    color: silver ;   
+}
+.jumbotron{
+    background-color: rgb(0, 0, 0);
+}
+.container-fluid{
+    background-color: cornflowerblue;
+}
+.card-header {
+    background-color: seagreen;
+}
+
+.card-title{
+    color: ivory;
+    justify-content: center;
+}
+.employee-card{
+    background-color: sienna;
+}
+.list-group-item{
+    background-color: ivory;
+}
